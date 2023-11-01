@@ -1,3 +1,5 @@
+import {Component} from 'react'
+
 import DestinationSearch from './components/DestinationSearch'
 
 import './App.css'
@@ -69,6 +71,40 @@ const destinationsList = [
   },
 ]
 
-const App = () => <DestinationSearch destinationsList={destinationsList} />
+class App extends Component {
+  state = {searchInput: ''}
+
+  onChangeEvent = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  render() {
+    const {searchInput} = this.state
+    const searchResults = destinationsList.filter(eachList =>
+      eachList.name.includes(searchInput),
+    )
+    return (
+      <div className="container">
+        <h1 className="main-heading">Destination Search</h1>
+        <input
+          type="search"
+          className="search-bar"
+          onChange={this.onChangeEvent}
+          value={searchInput}
+          placeholder="search"
+        />
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/destinations-search-icon-img.png"
+          alt="search icon"
+        />
+        <ul>
+          {searchResults.map(eachList => (
+            <DestinationSearch destinationItem={eachList} key={eachList.id} />
+          ))}
+        </ul>
+      </div>
+    )
+  }
+}
 
 export default App

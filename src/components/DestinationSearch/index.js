@@ -1,17 +1,14 @@
 import './index.css'
 
 const DestinationSearch = props => {
-  const {destinationsList} = props
-  const {id, name, imgUrl} = destinationsList
-  console.log(id)
+  const {destinationItem} = props
+  const {name, imgUrl} = destinationItem
 
   return (
-    <div className="container">
-      <h1 className="main-heading">Destination Search</h1>
-      <input type="search" />
-      <img src={imgUrl} className="image" alt={name} />
-      <p className="name">{name}</p>
-    </div>
+    <li>
+      <img src={imgUrl} alt={name} />
+      <p>{name}</p>
+    </li>
   )
 }
 
