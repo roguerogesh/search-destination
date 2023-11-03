@@ -1,8 +1,9 @@
 import './index.css'
 
 const DestinationSearch = props => {
-  const {destinationItem} = props
+  const {destinationItem, key} = props
   const {name, imgUrl} = destinationItem
+  console.log(key)
 
   return (
     <li>
